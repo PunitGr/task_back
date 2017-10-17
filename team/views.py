@@ -24,7 +24,7 @@ class MemberView(APIView):
         email = request.GET.get("email")
 
         if userId is not None and userId != '':
-            kwargs["userId"] = int(userId)
+            kwargs["id"] = int(userId)
 
         if email is not None and email != '':
             kwargs["email"] = email
@@ -96,7 +96,7 @@ class MemberView(APIView):
         email = request.GET.get("email")
 
         if userId is not None and userId != '':
-            kwargs["userId"] = int(userId)
+            kwargs["id"] = int(userId)
 
         if email is not None and email != '':
             kwargs["email"] = email
@@ -126,7 +126,7 @@ class MemberView(APIView):
 class EditMemberView(APIView):
     def get_object(self, user_id):
         try:
-            member = Member.objects.get(userId=user_id)
+            member = Member.objects.get(id=user_id)
         except Member.DoesNotExist:
             return Response(
                 {
@@ -149,7 +149,7 @@ class EditMemberView(APIView):
             return Response(
                 {
                     "status": "success",
-                    "results": "Successfully updated info"
+                    "results": serializer.validated_data
                 },
                 status=status.HTTP_201_CREATED
             )

@@ -3,8 +3,8 @@ from .models import Member
 
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ("userId", "firstName", "lastName", "phoneNumber", "email", "role")
-    list_filter = ["userId"]
+    list_display = ("firstName", "lastName", "phoneNumber", "email", "role")
+    list_filter = ["email"]
     search_fields = ["firstName", "lastName"]
 
 
