@@ -13,7 +13,7 @@ Parameter | Type
  lastName | String
  email | Email
  phoneNumber | Number
- role | String ("R"/A")
+ role | String ("R"/"A")
  
     
 * **Request:**
@@ -32,9 +32,13 @@ Parameter | Type
 * **Response:**
 
 ```javascript
-{
-    "status": "success",
-    "results": "Successfully created a team member"
+{   
+    "id": 2,
+    "firstName": "Punit",
+    "lastName": "Grover",
+    "phoneNumber": "+919911138192",
+    "email": "groove679@gmail.com",
+    "role": "R"
 }
 ```
 
@@ -44,25 +48,14 @@ Parameter | Type
  
 * **Request URL:**
 
-    `DELETE` `/users/?user=<id>` 
+    `DELETE` `/users/<pk>` 
 
 
 * **Query Parameters:**
 
 Parameter | Type
 :------------: | :-------------:
- user | id
- email | string 
-
-
-* **Response:**
-
-```javascript
-{
-    "status": "success",
-    "results": "Successfully deleted a team member"
-}
-```
+ id | Primary Key
 
 <br/>
 
@@ -70,17 +63,16 @@ Parameter | Type
  
 * **Request URL:**
 
-    `PATCH` `/users/edit/<user_id>/` 
+    `PATCH` `/users/<pk>/` 
 
 
 * **Query Parameters:**
 
 Parameter | Type
 :------------: | :-------------:
- user_id | id
+ id | Primary Key
 
 
-    
 * **Request:**
 
 ```javascript
@@ -94,10 +86,7 @@ Parameter | Type
 
 ```javascript
 {
-    "status": "success",
-    "results": {
-        "firstName": "Test"
-    }
+    "firstName": "Test"
 }
 ```
 
@@ -113,60 +102,52 @@ Parameter | Type
 * **Response:**
 
 ```javascript
-{
-    "status": "success",
-    "results": [
-        {
-            "id": 1,
-            "firstName": "Test",
-            "lastName": "Jones",
-            "phoneNumber": "+9198921138142",
-            "email": "test@gmail.com",
-            "role": "Regular"
-        },
-        {
-            "id": 2,
-            "firstName": "Punit",
-            "lastName": "Jones",
-            "phoneNumber": "+919821148142",
-            "email": "gtest@gmail.com",
-            "role": "Regular"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "firstName": "Test",
+        "lastName": "Jones",
+        "phoneNumber": "+9198921138142",
+        "email": "test@gmail.com",
+        "role": "Regular"
+    },
+    {
+        "id": 2,
+        "firstName": "Punit",
+        "lastName": "Jones",
+        "phoneNumber": "+919821148142",
+        "email": "gtest@gmail.com",
+        "role": "Regular"
+    }
+]
+
 ```
 
 <br/>
 
-#### 5. Get team members by id or email
+#### 5. Get team member by Primary Key
  
 * **Request URL:**
 
-    `GET` `/users/?user=1` 
+    `GET` `/users/<pk>` 
 
 * **Query Parameters:**
 
 Parameter | Type
 :------------: | :-------------:
- user | id
- email | Email
+ id | Primary Key
 
 
 * **Response:**
 
 ```javascript
 {
-    "status": "success",
-    "results": [
-        {
-            "id": 1,
-            "firstName": "Test",
-            "lastName": "Jones",
-            "phoneNumber": "+9198921138142",
-            "email": "test@gmail.com",
-            "role": "Regular"
-        }
-    ]
+    "id": 1,
+    "firstName": "Test",
+    "lastName": "Jones",
+    "phoneNumber": "+9198921138142",
+    "email": "test@gmail.com",
+    "role": "Regular"
 }
 ```
 
