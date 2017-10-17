@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('lastName', models.CharField(blank=True, max_length=40, null=True)),
                 ('phoneNumber', phonenumber_field.modelfields.PhoneNumberField(max_length=128)),
                 ('email', models.EmailField(max_length=240)),
-                ('role', models.CharField(choices=[('R', 'Regular'), ('A', 'Admin')], default='R', max_length=7)),
+                ('role', models.CharField(choices=[('R', 'Regular'), ('A', 'Admin')], default='R', max_length=1)),
             ],
         ),
     ]

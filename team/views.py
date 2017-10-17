@@ -67,10 +67,7 @@ class MemberView(APIView):
         """
         To add a team member
         """
-        data = request.data.copy()
-        data["role"] = "R" if data["role"] == 0 else "A"
-
-        serializer = MemberSerializer(data=data)
+        serializer = MemberSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(
@@ -128,22 +125,13 @@ class EditMemberView(APIView):
         try:
             member = Member.objects.get(id=user_id)
         except Member.DoesNotExist:
-            return Response(
-                {
-                    "status": "failed",
-                    "results": "Team member not found"
-                },
-            )
-
+            raise Http404
         return member
 
     def patch(self, request, user_id):
         member = self.get_object(user_id)
-        data = request.data.copy()
-        if "role" in data and data["role"] != "":
-            data["role"] = "R" if data["role"] == 0 else "A"
+        serializer = MemberSerializer(member, data=request.data, partial=True)
 
-        serializer = MemberSerializer(member, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(

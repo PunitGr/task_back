@@ -12,4 +12,4 @@ class Member(models.Model):
     lastName = models.CharField(blank=True, null=True, max_length=40)
     phoneNumber = PhoneNumberField()
     email = models.EmailField(max_length=240, blank=False)
-    role = models.CharField(max_length=7, default='R', choices=role_choices)
+    role = models.CharField(max_length=1, default='R', choices=role_choices)

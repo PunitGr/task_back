@@ -7,7 +7,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = '__all__'
+        fields = ("id", "firstName", "lastName", "phoneNumber", "email", "role")
 
     def get_role(self, obj):
         role = obj.role
