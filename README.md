@@ -31,7 +31,12 @@ quit
 ```
 
 ## Start django server
-Run `./manage.py runserver`
+```
+workon instawork
+(instawork)$./manage.py migrate
+(instawork)$./manage.py runserver
+```
+The server will be live on [http://localhost:8000/](http://localhost:8000/).
 
 ## Run tests
 To run tests first create test database,
@@ -41,3 +46,6 @@ Log in to mysql server using `mysql -u root -p`. After logging in,
 CREATE DATABASE test_task_back;
 GRANT ALL PRIVILEGES ON test_task_back.* TO 'instawork'@'localhost';
 ```
+
+## Documentation
+Read the docs, [here](/Docs.md)
